@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	  <title>Songs</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	 
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" >
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	  <link href="https://fonts.googleapis.com/css?family=Alata|Josefin+Sans|Maven+Pro&display=swap" rel="stylesheet">
+</head>
+<style >
+	.card{
+		box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+		transition: 0.3s;
+	}
+
+	.card:hover{
+		box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+	}
+	.container{
+		padding: 2px 16px;
+		
+	}
+body{
+	font-family: Gotham;
+}
+
+
+
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+/* custom scroll bar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::selection{
+  background: rgb(0,123,255,0.3);
+}
+.content{
+  max-width: 1250px;
+  margin: auto;
+  padding: 0 30px;
+}
+.navbar{
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  padding: 25px 0;
+  transition: all 0.3s ease;
+}
+.navbar.sticky{
+  background: #1b1b1b;
+  padding: 10px 0;
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
+}
+.navbar .content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar .logo a{
+  color: rgb(0, 153, 255);
+  font-size: 30px;
+  font-weight: 1000;
+  text-decoration: none;
+}
+.navbar .menu-list{
+  display: inline-flex;
+}
+.menu-list li{
+  list-style: none;
+}
+.menu-list li a{
+  color: rgb(0, 110, 255);
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.menu-list li a:hover{
+  color: #f1f1f1;
+}
+
+.about{
+  padding: 30px 0;
+}
+.about .title{
+  font-size: 38px;
+  font-weight: 700;
+}
+.about p{
+  padding-top: 20px;
+  
+  text-align: justify;
+}
+.card p{
+	left: -18mm;
+}
+.card span{
+	
+	font-size: 1mm;
+	visibility: hidden;
+}
+.icon{
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+}
+.menu-list .cancel-btn{
+  position: absolute;
+  right: 30px;
+  top: 20px;
+}
+@media (max-width: 1230px) {
+  .content{
+    padding: 0 60px;
+  }
+}
+@media (max-width: 1100px) {
+  .content{
+    padding: 0 40px;
+  }
+}
+@media (max-width: 900px) {
+  .content{
+    padding: 0 30px;
+  }
+}
+@media (max-width: 868px) {
+  body.disabled{
+    overflow: hidden;
+  }
+  .icon{
+    display: block;
+  }
+  .icon.hide{
+    display: none;
+  }
+  .navbar .menu-list{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    max-width: 400px;
+    left: -100%;
+    top: 0px;
+    display: block;
+    padding: 40px 0;
+    text-align: center;
+    background: #222;
+    transition: all 0.3s ease;
+  }
+  .navbar.show .menu-list{
+    left: 0%;
+  }
+  .navbar .menu-list li{
+    margin-top: 45px;
+  }
+  .navbar .menu-list li a{
+    font-size: 23px;
+    margin-left: -100%;
+    transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  .navbar.show .menu-list li a{
+    margin-left: 0px;
+  }
+}
+@media (max-width: 380px) {
+  .navbar .logo a{
+    font-size: 27px;
+  }
+}
+
+
+
+
+#backtotop{
+  z-index: 999;
+  display: inline-block;
+  position: fixed;
+  visibility: hidden;
+  bottom: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 16px;
+  text-align: center;
+  opacity: .2;
+}
+
+#backtotop i{
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: inherit;
+  text-decoration: none;
+}
+
+#backtotop.visible{
+  visibility: visible;
+  opacity: .5;
+  background: #0051ff;
+}
+
+#backtotop:hover{
+  opacity: 1;
+  background: #0099ff;
+}
+   
+</style>
+
+<script >
+	$(document).ready(function(){
+		$("#myinput").on("keyup",function(){
+		var value = $(this).val().toLowerCase();
+		$("#card div").filter(function(){
+			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+
+		});
+	});
+		});
+
+
+</script>
+
+
+
+<body >
+
+
+
+
+
+
+
+
+	<nav class="navbar">
+		<div class="content">
+		  <div class="logo">
+			<a href="#">Pro's Music</a>
+		  </div>
+		  <ul class="menu-list">
+			<div class="icon cancel-btn">
+			  <i class="fas fa-times"></i>
+			</div>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="contact.html">Cont</a></li>
+			<li><a href="video.html">Songs</a></li>
+			<li><a href="search.html">Playlist</a></li>
+			<li><a href="#">video </a></li>
+		  </ul>
+		  <div class="icon menu-btn">
+			<i class="fas fa-bars"></i>
+		  </div>
+		</div>
+	  </nav>
+	  <div class="banner"></div>
+	  <div class="about">
+
+	  </div>
+	  <script>
+		const body = document.querySelector("body");
+		const navbar = document.querySelector(".navbar");
+		const menuBtn = document.querySelector(".menu-btn");
+		const cancelBtn = document.querySelector(".cancel-btn");
+		menuBtn.onclick = ()=>{
+		  navbar.classList.add("show");
+		  menuBtn.classList.add("hide");
+		  body.classList.add("disabled");
+		}
+		cancelBtn.onclick = ()=>{
+		  body.classList.remove("disabled");
+		  navbar.classList.remove("show");
+		  menuBtn.classList.remove("hide");
+		}
+		window.onscroll = ()=>{
+		  this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+		}
+	  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div id ="portfolio" class="text-center paddsection">
+		<div class="section-title text-center">
+			<h2> Search for youe favorite Songs</h2><br>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<input id="myinput" type="text"  placeholder="Search ᵔ ᴥ ᵔ" class="form-control"><br><br>
+
+					<div class="portfolio-container" id="card">
+
+						<div class="col-md-4 portfolio-thumbnail  " >
+							<div class="card" id="card">
+								<img src="Songs/Cartoon x nublu x Gameboy Tetris - Biology/images/music-1.jpg" style="width: 100%">
+								<h4><b>Biology</b></h4>
+								<p>Cartoon, nublu, Gameboy Tetris<span>#001</span><br><a href="Songs/Cartoon x nublu x Gameboy Tetris - Biology/index.html">Listen Now</a></p>
+							</div>
+						</div>
+
+	  <div class="col-md-4 portfolio-thumbnail all ">
+                <div class="card" id="card">
+				  <img src="Songs/Unknown Brain x Rival - Control (feat. Jex)/images/music-1.jpg" alt="Avatar" style="width: 100%">
+				    <h4><b>Control</b></h4> 
+				    <p>Unknown Brain, Rival, Jex<span>#002</span><br><a href="Songs/Unknown Brain x Rival - Control (feat. Jex)/index.html">Listen Now</a></p> 
+				</div>
+            </div>
+
+
+            <div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="Songs/NIVIRO - The Ghost/images/music-1.jpg" alt="Avatar"style="width: 100%">
+				    <h4><b>The Ghost</b></h4> 
+				    <p>NIVIRO<span>#003</span><br><a href="Songs/NIVIRO - The Ghost/index.html">Listen Now</a></p> 
+				</div>
+            </div>
+
+
+            <div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="Songs/NIVIRO - Demons/images/music-1.jpg" alt="Avatar" style="width: 100%">
+				    <h4><b>Demons</b></h4> 
+				    <p>NIVIRO<span>#004</span><br><a href="Songs/NIVIRO - Demons/index.html">Listen Now</a></p> 
+				</div>
+            </div>
+
+
+
+            <div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="Songs/LBLVNC & Godmode - Power !/images/music-1.jpg" alt="Avatar" style="width: 100%">
+   					 <h4><b>Power !  </b></h4> 
+				    <p>LBLVNC, Godmode<span>#005</span><br><a href="Songs/LBLVNC & Godmode - Power !/index.html">Listen Now</a></p> 
+				</div>
+            </div>
+
+
+
+            <div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="Songs/Clarx & Moe Aly - Healing/images/music-1.jpg" alt="Avatar" style="width: 100%">
+				    <h4><b>Healing </b></h4> 
+				    <p> Clarx, Moe Aly<span>#006</span><br><a href="Songs/Clarx & Moe Aly - Healing/index.html">Listen Now</a></p> 
+				</div>
+            </div>
+
+
+
+            <div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="Songs/Egzod & EMM - Game Over/images/music-1.jpg" alt="Avatar" style="width: 100%">
+    				<h4><b>Game Over  </b></h4> 
+				    <p>Egzod, EMM<span>#007</span><br><a href="Songs/Egzod & EMM - Game Over/index.html">Listen Now</a></p>				
+				</div>
+            </div>
+
+
+
+            <div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="Songs/Lost Sky - Where We Started (feat. Jex)/images/music-1.jpg" alt="Avatar" style="width: 100%">
+				    <h4><b> Where We Started</b></h4> 
+				    <p>Lost Sky,Jex<span>#008</span><br><a href="Songs/Lost Sky - Where We Started (feat. Jex)/index.html">Listen Now</a></p> 
+				</div>
+            </div>
+
+
+
+            <div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="Songs/Halvorsen - Band-Aid/images/music-1.jpg" alt="Avatar" style="width: 100%">
+				    <h4><b>Band-Aid </b></h4> 
+				    <p>Halvorsen<span>#009</span><br><a href="Songs/Halvorsen - Band-Aid/index.html">Listen Now</a></p> 
+				</div>
+            </div>
+
+
+
+       
+
+
+
+            <div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="Songs/BEAUZ & JVNA - Crazy/images/music-1.jpg" alt="Avatar" style="width: 100%">
+				    <h4><b>Crazy</b></h4> 
+				    <p>BEAUZ & JVNA <span>#010</span><br><a href="Songs/BEAUZ & JVNA - Crazy/index.html">Listen Now</a></p> 
+				</div>
+            </div>
+
+
+
+            <div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="Songs/Besomorph & Arcando & Neoni - Army/images/music-1.jpg" alt="Avatar" style="width: 100%">
+				    <h4><b>Army  </b></h4> 
+				    <p>Besomorph & Arcando & Neoni<span>#011</span><br><a href="Songs/Besomorph & Arcando & Neoni - Army/index.html">Listen Now</a></p>  
+				</div>
+            </div>
+
+
+
+
+            <div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="Songs/Diamond Eyes - Everything/images/music-1.jpg" alt="Avatar" style="width: 100%">
+				    <h4><b>Everything </b></h4> 
+				    <p>Diamond Eyes<span>#012</span><br><a href="Songs/Diamond Eyes - Everything/index.html">Listen Now</a></p> 
+				</div>
+            </div>
+
+
+
+            <div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="Songs/Unknown Brain - DEAD (ft. KAZHI)/images/music-1.jpg" alt="Avatar" style="width: 100%">
+				    <h4><b>Dead (ft. KAZHI)</b></h4> 
+				    <p>Unknown Brain<span>#013</span><br><a href="Songs/Unknown Brain - DEAD (ft. KAZHI)/index.html">Listen Now</a></p> 
+				</div>
+            </div>
+
+
+
+            <div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="videoo/images/10.jpg" alt="Avatar"style="width: 100%">
+				    <h4><b>Sun Goes Down </b></h4> 
+				    <p> Jim Yosef x ROY KNOX<span>#014</span><br><a href="#">Listen Now</a></p>  
+				</div>
+            </div>
+
+
+
+            <div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="Songs/Unknown Brain - Dancing On The Moon (ft. Luke Burr)/images/music-1.jpg" alt="Avatar" style="width: 100%">
+				    <h4><b>Dancing On The Moon  </b></h4> 
+				    <p>Unknown Brain <span>#015</span><br><a href="Songs/Unknown Brain - Dancing On The Moon (ft. Luke Burr)/index.html">Listen Now</a></p> 
+				</div>
+            </div>
+
+       		<div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="Songs/Unknown Brain - Hollywood Perfect (ft. NotEvenTanner)/images/music-1.jpg" alt="Avatar" style="width: 100%">
+				    <h4><b>Hollywood Perfect(ft. NotEvenTanner) </b></h4> 
+				    <p>Unknown Brain<span>#016</span><br><a href="Songs/Unknown Brain - Hollywood Perfect (ft. NotEvenTanner)/index.html">Listen Now</a></p> 
+				</div>
+            </div>
+            
+			<div class="col-md-4 portfolio-thumbnail ">
+				<div class="card" id="card">
+				<img src="Songs/Unknown Brain - Inspiration (feat. Aviella)/images/music-1.jpg" alt="Avatar" style="width: 100%">
+				  <h4><b>Inspiration (feat. Aviella) </b></h4> 
+				  <p>Unknown Brain<span>#017</span><br><a href="Songs/Unknown Brain - Inspiration (feat. Aviella)/index.html">Listen Now</a></p> 
+			  </div>
+		  </div>
+
+		  <div class="col-md-4 portfolio-thumbnail ">
+              	<div class="card" id="card">
+				  <img src="Songs/Unknown Brain - Jungle of Love (ft. Glaceo)/images/music-1.jpg" alt="Avatar" style="width: 100%">
+				    <h4><b>Jungle of Love (ft. Glaceo) </b></h4> 
+				    <p>Unknown Brain<span>#018</span><br><a href="Songs/Unknown Brain - Jungle of Love (ft. Glaceo)/index.html">Listen Now</a></p> 
+				</div>
+            </div>
+
+			<div class="col-md-4 portfolio-thumbnail ">
+				<div class="card" id="card">
+				<img src="Songs/Unknown Brain - Say Goodbye (ft. Marvin Divine)/images/music-1.jpg" alt="Avatar" style="width: 100%">
+				  <h4><b>Say Goodbye (ft. Marvin Divine) </b></h4> 
+				  <p>Unknown Brain<span>#019</span><br><a href="Songs/Unknown Brain - Say Goodbye (ft. Marvin Divine)/index.html">Listen Now</a></p> 
+			  </div>
+		  </div>
+
+		  <div class="col-md-4 portfolio-thumbnail ">
+			<div class="card" id="card">
+			<img src="Songs/Unknown Brain - Superhero (feat. Chris Linton)/images/music-1.jpg" alt="Avatar" style="width: 100%">
+			  <h4><b>Superhero (feat. Chris Linton) </b></h4> 
+			  <p>Unknown Brain<span>#020</span><br><a href="Songs/Unknown Brain - Superhero (feat. Chris Linton)/index.html">Listen Now</a></p> 
+		    </div>
+	      </div>
+
+		  <div class="col-md-4 portfolio-thumbnail ">
+			<div class="card" id="card">
+			<img src="Songs/Unknown Brain & Hoober - Phenomenon (ft. Dax & VinDon)/images/music-1.jpg" alt="Avatar" style="width: 100%">
+			  <h4><b>Phenomenon (ft. Dax & VinDon) </b></h4> 
+			  <p>Unknown Brain & Hoober<span>#021</span><br><a href="Songs/Unknown Brain & Hoober - Phenomenon (ft. Dax & VinDon)/index.html">Listen Now</a></p> 
+		    </div>
+	      </div>
+
+		  <div class="col-md-4 portfolio-thumbnail ">
+			<div class="card" id="card">
+			<img src="Songs/3rd Prototype - I Know/images/music-1.jpg" alt="Avatar" style="width: 100%">
+			  <h4><b>I Know </b></h4> 
+			  <p>3rd Prototype<span>#022</span><br><a href="Songs/3rd Prototype - I Know/index.html">Listen Now</a></p> 
+		    </div>
+	      </div>
+
+		  <div class="col-md-4 portfolio-thumbnail ">
+			<div class="card" id="card">
+			<img src="Songs/Savannah (feat. Philly K)/images/music-1.jpg" alt="Avatar" style="width: 100%">
+			  <h4><b>Savannah (feat. Philly K) </b></h4> 
+			  <p>Diviners<span>#023</span><br><a href="Songs/Savannah (feat. Philly K)/index.html">Listen Now</a></p> 
+		    </div>
+	      </div>
+
+		  <div class="col-md-4 portfolio-thumbnail ">
+			<div class="card" id="card">
+			<img src="Songs/Diamond Eyes - Stars/images/music-1.jpg" alt="Avatar" style="width: 100%">
+			  <h4><b>Stars </b></h4> 
+			  <p>Diamond Eyes<span>#024</span><br><a href="Songs/Diamond Eyes - Stars/index.html">Listen Now</a></p> 
+		    </div>
+	      </div>
+
+		  <div class="col-md-4 portfolio-thumbnail ">
+			<div class="card" id="card">
+			<img src="Songs/Kisma - Fly Again/images/music-1.jpg" alt="Avatar" style="width: 100%">
+			  <h4><b>Fly Again </b></h4> 
+			  <p>Kisma<span>#025</span><br><a href="Songs/Kisma - Fly Again/index.html">Listen Now</a></p> 
+		    </div>
+	      </div>
+
+		 
+
+		  <div class="col-md-4 portfolio-thumbnail ">
+			<div class="card" id="card">
+			<img src="Songs/Spektrum & Sara Skinner - Keep You/images/music-1.jpg" alt="Avatar" style="width: 100%">
+			  <h4><b>Keep You </b></h4> 
+			  <p>Spektrum & Sara Skinner<span>#026</span><br><a href="Songs/Spektrum & Sara Skinner - Keep You/index.html">Listen Now</a></p> 
+		    </div>
+	      </div>
+
+		  <div class="col-md-4 portfolio-thumbnail ">
+			<div class="card" id="card">
+			<img src="videoo/images/12.jpg" alt="Avatar" style="width: 100%">
+			  <h4><b>Stars </b></h4> 
+			  <p>Diamond Eyes<span>#027</span><br><a href="#">Listen Now</a></p> 
+		    </div>
+	      </div>
+
+		  <div class="col-md-4 portfolio-thumbnail ">
+			<div class="card" id="card">
+			<img src="videoo/images/12.jpg" alt="Avatar" style="width: 100%">
+			  <h4><b>Stars </b></h4> 
+			  <p>Diamond Eyes<span>#028</span><br><a href="#">Listen Now</a></p> 
+		    </div>
+	      </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <a id="backtotop"><i class="fa fa-chevron-up"></i></a>
+
+  <script type="text/javascript" src="videoo/jquery.backtotop2.js"></script>
+
+</body>
+</html>

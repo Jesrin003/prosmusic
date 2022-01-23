@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro's Music</title>
+    <link rel="shortcut icon" href="20210822_042703.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+
+ 
+
+ 
+
+
+
+  <nav class="navbar"  >
+    <div class="ccontent">
+      <div class="logo">
+        <a href="#"><span>P</span>ro's Music </a>
+      </div>
+      <ul class="menu-list">
+        <div class="icon cancel-btn">
+          <i class="fas fa-times"></i>
+        </div>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Cont</a></li>
+        <li><a href="search.html">Songs</a></li>
+        <li><a href="playlist.html">Playlists</a></li>
+        <li><a href="">Video</a></li>
+      </ul>
+      <div class="icon menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+    
+  </nav>
+ 
+  <div class="banner" id="Home"></div>
+  
+ 
+
+
+
+
+
+
+  
+
+
+
+     <div class="about" >
+       
+        <div class="cards">
+            <h2 class="header">
+               Popular Playlists
+            </h2>
+            <div class="services">
+               <div class="content content-1">
+                <i class="fa fa-headphones fa-5x" aria-hidden="true"></i>
+                  <h2>
+                     Beat
+                  </h2>
+                  <p>
+                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita ullam aliquid non eligendi, nemo est neque reiciendis error?
+                  </p>
+                  <a href="IndexPlaylist/Beat/index.html">Listen</a>
+               </div>
+               <div class="content content-2">
+                <i class="fa fa-heart fa-5x" aria-hidden="true"></i>
+                  <h2>
+                    Love
+                  </h2>
+                  <p>
+                     Artist : <br>Gener : <br>Song Name : <br> NCS Release
+                  </p>
+                  <a href="IndexPlaylist/Love/index.html">Listen</a>
+               </div>
+               <div class="content content-3">
+                <i class="fa fa-space-shuttle fa-5x" aria-hidden="true"></i>
+                  <h2>
+                     UB Special
+                  </h2>
+                  <p>
+                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita ullam aliquid non eligendi, nemo est neque reiciendis error?
+                  </p>
+                  <a href="IndexPlaylist/UB Special/index.html">Listen</a>
+               </div>
+               
+            </div>
+         </div>
+     </div>
+
+
+
+
+  <script>
+    const body = document.querySelector("body");
+    const navbar = document.querySelector(".navbar");
+    const menuBtn = document.querySelector(".menu-btn");
+    const cancelBtn = document.querySelector(".cancel-btn");
+    menuBtn.onclick = ()=>{
+      navbar.classList.add("show");
+      menuBtn.classList.add("hide");
+      body.classList.add("disabled");
+    }
+    cancelBtn.onclick = ()=>{
+      body.classList.remove("disabled");
+      navbar.classList.remove("show");
+      menuBtn.classList.remove("hide");
+    }
+    window.onscroll = ()=>{
+      this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section>
+<div class="grid">
+
+  <div class="grid-item">
+    <div class="card">
+      <img class="card-img" src="Songs/Cartoon x nublu x Gameboy Tetris - Biology/images/music-1.jpg" alt="Rome" />
+      <div class="card-content">
+        <h1 class="card-header">Biology</h1>
+        <p class="card-text">
+           Song : <strong> Biology</strong><br>  Artist :  Cartoon, nublu, Gameboy Tetris <br> <strong>[NCS Release]</strong>
+         
+          
+        </p>
+        <button class="card-btn"><a href="Songs/Cartoon x nublu x Gameboy Tetris - Biology/index.html"> Listen</a> <span>&rarr;</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-item">
+    <div class="card">
+      <img
+        class="card-img"
+        src="Songs/Unknown Brain x Rival - Control (feat. Jex)/images/music-1.jpg"
+        alt="Grand Canyon"
+      />
+      <div class="card-content">
+        <h1 class="card-header">Control</h1>
+        <p class="card-text">
+          Song : <strong> Control</strong><br>  Artist :  Unknown Brain, Rival, Jex <br> <strong>[NCS Release]</strong>
+        </p>
+        <button class="card-btn"><a href="Songs/Unknown Brain x Rival - Control (feat. Jex)/index.html"> Listen</a> <span>&rarr;</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="grid-item">
+    <div class="card">
+      <img class="card-img" src="Songs/NIVIRO - The Ghost/images/music-1.jpg" alt="Maldives" />
+      <div class="card-content">
+        <h1 class="card-header">The Ghost</h1>
+        <p class="card-text">
+          Song : <strong> The Ghost</strong><br>  Artist : NIVIRO <br> <strong>[NCS Release]</strong>
+        </p>
+        <button class="card-btn"><a href="Songs/NIVIRO - The Ghost/index.html"> Listen</a> <span>&rarr;</span></button>
+      </div>
+    </div>
+  </div>
+
+
+
+  
+  <div class="grid-item">
+    <div class="card">
+      <img class="card-img" src="Songs/NIVIRO - Demons/images/music-1.jpg" alt="Cats" />
+      <div class="card-content">
+        <h1 class="card-header">Demons</h1>
+        <p class="card-text">
+          Song : <strong> Demons</strong><br>  Artist : NIVIRO <br> <strong>[NCS Release]</strong>
+        </p>
+        <button class="card-btn"><a href="Songs/NIVIRO - Demons/index.html"> Listen</a> <span>&rarr;</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-item">
+    <div class="card">
+      <img class="card-img" src="Songs/LBLVNC & Godmode - Power !/images/music-1.jpg" alt="Cats" />
+      <div class="card-content">
+        <h1 class="card-header">Power !</h1>
+        <p class="card-text">
+          Song : <strong> Power !</strong><br>  Artist : LBLVNC, Godmode <br> <strong>[NCS Release]</strong>
+        </p>
+        <button class="card-btn"><a href="Songs/LBLVNC & Godmode - Power !/index.html"> Listen</a> <span>&rarr;</span></button>
+      </div>
+    </div>
+  </div>
+
+
+
+  
+  <div class="grid-item">
+    <div class="card">
+      <img class="card-img" src="Songs/Clarx & Moe Aly - Healing/images/music-1.jpg" alt="Cats" />
+      <div class="card-content">
+        <h1 class="card-header">Healing</h1>
+        <p class="card-text">
+          Song : <strong> Healing</strong><br>  Artist :Clarx, Moe Aly <br> <strong>[NCS Release]</strong>
+        </p>
+        <button class="card-btn"><a href="Songs/Clarx & Moe Aly - Healing/index.html"> Listen</a> <span>&rarr;</span></button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  
+  <div class="grid-item">
+    <div class="card">
+      <img class="card-img" src="Songs/Egzod & EMM - Game Over/images/music-1.jpg" alt="Cats" />
+      <div class="card-content">
+        <h1 class="card-header">Game Over</h1>
+        <p class="card-text">
+          Song : <strong> Game Over</strong><br>  Artist : Egzod, EMM <br> <strong>[NCS Release]</strong>
+        </p>
+        <button class="card-btn"><a href="Songs/Egzod & EMM - Game Over/index.html"> Listen</a> <span>&rarr;</span></button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="grid-item">
+    <div class="card">
+      <img class="card-img" src="Songs/Besomorph & Arcando & Neoni - Army/images/music-1.jpg" alt="Cats" />
+      <div class="card-content">
+        <h1 class="card-header">Army</h1>
+        <p class="card-text">
+          Song : <strong>Army</strong><br>  Artist : Arcando & Neoni <br> <strong>[NCS Release]</strong>
+        </p>
+        <button class="card-btn"><a href="Songs/Besomorph & Arcando & Neoni - Army/index.html"> Listen</a> <span>&rarr;</span></button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="grid-item">
+    <div class="card">
+      <img class="card-img" src="Songs/Halvorsen - Band-Aid/images/music-1.jpg" alt="Cats" />
+      <div class="card-content">
+        <h1 class="card-header"> Band-Aid</h1>
+        <p class="card-text">
+          Song : <strong>  Band-Aid</strong><br>  Artist : Halvorsen  <br> <strong>[NCS Release]</strong>
+        </p>
+        <button class="card-btn"><a href="Songs/Halvorsen - Band-Aid/index.html"> Listen</a> <span>&rarr;</span></button>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a id="backtotop"><i class="fa fa-chevron-up"></i></a>
+
+<script type="text/javascript" src="jquery.backtotop.js"></script>
+
+
+
+
+
+<div class="footer">
+  <div class="share">
+    <h3>Follow Us</h3>
+    <cat><a href="#" class="fab fa-facebook-f"></a></cat>
+    <dog><a href="#" class="fab fa-twitter"></a> </dog>
+    <meow><a href="#" class="fab fa-instagram"></a></meow>
+    <massi><a href="#" class="fab fa-youtube"></a></massi>
+  </div>
+  <h1 class="credit">
+    Created by <a href="#">Jesrin</a>  |  all rights reserved<br>Pictures from <a href="https://unsplash.com/" >unsplash</a> and <a href="https://pixabay.com/" >pixabay</a>
+  </h1>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
